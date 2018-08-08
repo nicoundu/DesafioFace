@@ -74,11 +74,11 @@ public class FinderDialogFragment extends DialogFragment {
                     setCancelable(false);
                     imageButton.setVisibility(View.INVISIBLE);
                     editText.setVisibility(View.INVISIBLE);
-                    //loading.setVisibility(View.VISIBLE);
+                    loading.setVisibility(View.VISIBLE);
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("page", "1");
                     map.put("name", name);
-                    new QueryUsers(-1).execute();
+                    new QueryUsers(-1).execute(map);
 
                 }
 

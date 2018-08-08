@@ -63,9 +63,7 @@ public class GetUsers extends AsyncTask<Map<String, String>, Integer, Integer> {
                 Developer[] developers = response.body();
                 if (developers != null && developers.length > 0) {
                     Log.d("DEVELOPERS", String.valueOf(developers.length));
-
                     for (Developer servDeveloper: developers) {
-
                         List<Developer> localDevelopers = Developer.find(Developer.class, "serverId = ?", String.valueOf(servDeveloper.getId()));
                         if (localDevelopers != null && localDevelopers.size() > 0) {
                             Developer local = localDevelopers.get(0);
@@ -75,13 +73,10 @@ public class GetUsers extends AsyncTask<Map<String, String>, Integer, Integer> {
                         } else {
                             servDeveloper.create();
                         }
-
                     }
-
+                } else {
+                    code = 666;
                 }
-
-            } else {
-                code = 666;
 
             }
 
