@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.desafiolatam.desafioface.R;
 import com.desafiolatam.desafioface.data.DeveloperQueries;
 import com.desafiolatam.desafioface.models.Developer;
+import com.desafiolatam.desafioface.networks.favorites.PostFavorite;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -68,7 +69,8 @@ public class DevelopersAdapter extends RecyclerView.Adapter<DevelopersAdapter.Vi
         holder.poke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO trigger push notification
+                long id = developers.get(holder.getAdapterPosition()).getServer_id();
+                new PostFavorite().execute(id);
             }
         });
     }

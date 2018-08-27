@@ -1,4 +1,4 @@
-package com.desafiolatam.desafioface.networks;
+package com.desafiolatam.desafioface.networks.users;
 
 import android.content.Intent;
 import android.os.AsyncTask;

@@ -6,7 +6,7 @@ import android.content.Context;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.desafiolatam.desafioface.networks.GetUsers;
+import com.desafiolatam.desafioface.networks.users.GetUsers;
 
 import java.util.HashMap;
 import java.util.Map;

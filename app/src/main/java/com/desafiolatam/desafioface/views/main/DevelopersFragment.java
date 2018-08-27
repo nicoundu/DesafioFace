@@ -12,11 +12,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.desafiolatam.desafioface.R;
 import com.desafiolatam.desafioface.adapters.DevelopersAdapter;
-import com.desafiolatam.desafioface.networks.GetUsers;
+import com.desafiolatam.desafioface.networks.users.GetUsers;
 
 import java.util.HashMap;
 import java.util.Map;

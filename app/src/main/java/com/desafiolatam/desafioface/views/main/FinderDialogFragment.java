@@ -3,7 +3,6 @@ package com.desafiolatam.desafioface.views.main;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,7 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.desafiolatam.desafioface.R;
-import com.desafiolatam.desafioface.networks.GetUsers;
+import com.desafiolatam.desafioface.networks.users.GetUsers;
 import com.github.ybq.android.spinkit.SpinKitView;
 
 import java.util.HashMap;
