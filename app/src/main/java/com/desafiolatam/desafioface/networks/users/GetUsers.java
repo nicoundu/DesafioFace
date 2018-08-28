@@ -1,12 +1,13 @@
 package com.desafiolatam.desafioface.networks.users;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.desafiolatam.desafioface.app.DasfioApp;
 import com.desafiolatam.desafioface.models.Developer;
-import com.desafiolatam.desafioface.networks.users.UserInterceptor;
-import com.desafiolatam.desafioface.networks.users.Users;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,9 +23,12 @@ public class GetUsers extends AsyncTask<Map<String, String>, Integer, Integer> {
     private Map<String, String> queryMap;
     private int result;
     private final Users request = new UserInterceptor().get();
+    private final Context context;
 
-    public GetUsers(int additionalPages) {
+
+    public GetUsers(int additionalPages, Context context) {
         this.additionalPages = additionalPages;
+        this.context = context;
     }
 
     @Override
@@ -44,7 +48,14 @@ public class GetUsers extends AsyncTask<Map<String, String>, Integer, Integer> {
         }
 
 
-        return null;
+        return result;
+    }
+
+    @Override
+    protected void onPostExecute(Integer integer) {
+        if (500 == integer) {
+            LocalBroadcastManager.getInstance(context).sendBroadcast(new Intent().setAction(DasfioApp.SESION_EXPIRED));
+        }
     }
 
     private void increasePage() {

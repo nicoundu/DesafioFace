@@ -77,7 +77,7 @@ public class FinderDialogFragment extends DialogFragment {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("page", "1");
                     map.put("name", name);
-                    new QueryUsers(-1).execute(map);
+                    new QueryUsers(-1, getContext()).execute(map);
 
                 }
 
@@ -97,12 +97,14 @@ public class FinderDialogFragment extends DialogFragment {
 
     private class QueryUsers extends GetUsers {
 
-        public QueryUsers(int additionalPages) {
-            super(additionalPages);
+
+        public QueryUsers(int additionalPages, Context context) {
+            super(additionalPages, context);
         }
 
         @Override
         protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
             dismiss();
             callback.search(name);
             loading.setVisibility(View.GONE);

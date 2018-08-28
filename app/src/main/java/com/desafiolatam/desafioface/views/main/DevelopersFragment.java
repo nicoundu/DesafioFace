@@ -1,6 +1,7 @@
 package com.desafiolatam.desafioface.views.main;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -64,7 +65,7 @@ public class DevelopersFragment extends Fragment {
                         Map<String, String> map = new HashMap<String, String>();
                         String currentPage = java.lang.String.valueOf((total / 10) + 1);
                         map.put("page", currentPage);
-                        new ScrollRequest(4).execute(map);
+                        new ScrollRequest(4, getContext()).execute(map);
                     }
                 }
 
@@ -95,8 +96,9 @@ public class DevelopersFragment extends Fragment {
 
     private class ScrollRequest extends GetUsers {
 
-        public ScrollRequest(int additionalPages) {
-            super(additionalPages);
+
+        public ScrollRequest(int additionalPages, Context context) {
+            super(additionalPages, context);
         }
 
         @Override
@@ -107,6 +109,7 @@ public class DevelopersFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Integer integer) {
+            super.onPostExecute(integer);
             pendingRequest = false;
             adapter.update();
             refreshLayout.setRefreshing(false);
